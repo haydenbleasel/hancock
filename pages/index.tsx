@@ -49,14 +49,14 @@ const Home: NextPage = () => {
     signature.push(
       `<a href="${encode(website)}"><img alt="${encode(company)}" src="${encode(
         logo
-      )}" width="32" height="32"></a>`,
+      )}" width="32" height="32" style="width: 32px; height: 32px;"></a>`,
       `<div style="orphans: 2; widows: 2;" dir="auto"><br></div>`
     );
   }
 
   if (name) {
     signature.push(
-      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="white-space: pre-wrap; font-family: ${encode(
+      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="font-family: ${encode(
         fontStack
       )};"><b style="color: #000000">${encode(name)}</b>`
     );
@@ -70,7 +70,7 @@ const Home: NextPage = () => {
 
   if (role || company) {
     signature.push(
-      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="white-space: pre-wrap; font-family: ${encode(
+      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="font-family: ${encode(
         fontStack
       )};"><font color="#000000">`
     );
@@ -92,7 +92,7 @@ const Home: NextPage = () => {
 
   if (address) {
     signature.push(
-      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="background-color: var(--backgroundColor); white-space: pre-wrap; font-family: ${encode(
+      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="background-color: var(--backgroundColor); font-family: ${encode(
         fontStack
       )};"><font color="#000000">${encode(address)}</font></span></div>`
     );
@@ -104,26 +104,26 @@ const Home: NextPage = () => {
     );
 
     if (phone) {
+      const phoneNumber = phone.replace(/\s/gu, '');
+
       signature.push(
-        `<span style="white-space: pre-wrap; font-family: ${encode(
+        `<span style="font-family: ${encode(
           fontStack
         )}; background-color: var(--backgroundColor);"><a href="tel:${encode(
-          phone
+          phoneNumber
         )}">${encode(phone)}</a></span>`
       );
     }
 
     if (phone && (bookingLink || email)) {
       signature.push(
-        `<span style="white-space: pre-wrap; font-family: ${encode(
-          fontStack
-        )};"> &bull; </span>`
+        `<span style="font-family: ${encode(fontStack)};"> &bull; </span>`
       );
     }
 
     if (bookingLink) {
       signature.push(
-        `<span style="white-space: pre-wrap; font-family: ${encode(
+        `<span style="font-family: ${encode(
           fontStack
         )}; background-color: var(--backgroundColor);"><a href="${encode(
           bookingLink
@@ -133,15 +133,13 @@ const Home: NextPage = () => {
 
     if (bookingLink && email) {
       signature.push(
-        `<span style="white-space: pre-wrap; font-family: ${encode(
-          fontStack
-        )};"> &bull; </span>`
+        `<span style="font-family: ${encode(fontStack)};"> &bull; </span>`
       );
     }
 
     if (email) {
       signature.push(
-        `<span style="white-space: pre-wrap; font-family: ${encode(
+        `<span style="font-family: ${encode(
           fontStack
         )}; background-color: var(--backgroundColor);"><a href="mailto:${encode(
           email
@@ -154,10 +152,10 @@ const Home: NextPage = () => {
 
   if (footer) {
     signature.push(
-      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="white-space: pre-wrap; font-family: ${encode(
+      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="font-family: ${encode(
         fontStack
       )};"><font color="#000000"><br></font></span></div>`,
-      `<div style="orphans: 2; widows: 2;" dir="auto"><font style="font-size: 10px;" color="#808080"><span style="white-space: pre-wrap; font-family: ${encode(
+      `<div style="orphans: 2; widows: 2;" dir="auto"><font style="font-size: 10px;" color="#808080"><span style="font-family: ${encode(
         fontStack
       )};">${encode(footer)}</span></font></div>`
     );
