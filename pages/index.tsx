@@ -273,6 +273,10 @@ const Home: NextPage = () => {
             placeholder={defaultFontStack}
           />
         </div>
+
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          Tested in Outlook and Gmail.
+        </p>
       </main>
 
       <div className="h-screen">
