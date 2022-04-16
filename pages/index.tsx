@@ -163,7 +163,6 @@ const Home: NextPage = () => {
         <div className="grid gap-6">
           <Input
             label="Full name"
-            id="name"
             value={name}
             onChangeText={setName}
             placeholder="Jane Smith"
@@ -171,7 +170,6 @@ const Home: NextPage = () => {
 
           <Input
             label="Email address"
-            id="email"
             value={email}
             onChangeText={setEmail}
             placeholder="janesmith@acme.com"
@@ -180,7 +178,6 @@ const Home: NextPage = () => {
 
           <Input
             label="Pronouns"
-            id="pronouns"
             value={pronouns}
             onChangeText={setPronouns}
             placeholder="He / him"
@@ -188,7 +185,6 @@ const Home: NextPage = () => {
 
           <Input
             label="Role"
-            id="role"
             value={role}
             onChangeText={setRole}
             placeholder="Product Manager"
@@ -196,7 +192,6 @@ const Home: NextPage = () => {
 
           <Input
             label="Phone number (optional)"
-            id="phone"
             value={phone}
             onChangeText={setPhone}
             placeholder="+1 234 567 890"
@@ -205,7 +200,6 @@ const Home: NextPage = () => {
 
           <Input
             label="Call booking link (optional)"
-            id="link"
             value={bookingLink}
             onChangeText={setBookingLink}
             placeholder="https://example.com/booking"
@@ -214,7 +208,6 @@ const Home: NextPage = () => {
 
           <Input
             label="Company"
-            id="company"
             value={company}
             onChangeText={setCompany}
             placeholder="Acme, Inc."
@@ -222,7 +215,6 @@ const Home: NextPage = () => {
 
           <Input
             label="Company Website"
-            id="website"
             value={website}
             onChangeText={setWebsite}
             placeholder="https://acme.com/"
@@ -230,7 +222,6 @@ const Home: NextPage = () => {
 
           <Input
             label="Company Address"
-            id="address"
             value={address}
             onChangeText={setAddress}
             placeholder="123 Charming Avenue, New York"
@@ -238,7 +229,6 @@ const Home: NextPage = () => {
 
           <Input
             label="Logo URL"
-            id="logo"
             value={logo}
             onChangeText={setLogo}
             placeholder="https://acme.com/images/logo.png"
@@ -247,7 +237,6 @@ const Home: NextPage = () => {
 
           <Input
             label="Footer"
-            id="footer"
             value={footer}
             onChangeText={setFooter}
             placeholder="Start typing..."
@@ -255,7 +244,6 @@ const Home: NextPage = () => {
 
           <Input
             label="Font Stack"
-            id="fontStack"
             value={fontStack}
             onChangeText={setFontStack}
             placeholder={defaultFontStack}
