@@ -3,6 +3,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { encode } from 'he';
 import Input from '../components/input';
 
 const defaultFontStack = [
@@ -46,18 +47,22 @@ const Home: NextPage = () => {
 
   if (logo) {
     signature.push(
-      `<a href="${website}"><img alt="${company}" src="${logo}" width="32" height="32"></a>`,
+      `<a href="${encode(website)}"><img alt="${encode(company)}" src="${encode(
+        logo
+      )}" width="32" height="32"></a>`,
       `<div style="orphans: 2; widows: 2;" dir="auto"><br></div>`
     );
   }
 
   if (name) {
     signature.push(
-      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack};"><b style="color: rgb(0, 0, 0);">${name}</b>`
+      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="white-space: pre-wrap; font-family: ${encode(
+        fontStack
+      )};"><b style="color: #000000">${encode(name)}</b>`
     );
 
     if (pronouns) {
-      signature.push(`<font color="#808080"> (${pronouns})</font>`);
+      signature.push(`<font color="#808080"> (${encode(pronouns)})</font>`);
     }
 
     signature.push('</span></div>');
@@ -65,7 +70,9 @@ const Home: NextPage = () => {
 
   if (role || company) {
     signature.push(
-      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack};"><font color="#000000">`
+      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="white-space: pre-wrap; font-family: ${encode(
+        fontStack
+      )};"><font color="#000000">`
     );
 
     if (role) {
@@ -85,7 +92,9 @@ const Home: NextPage = () => {
 
   if (address) {
     signature.push(
-      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="background-color: var(--backgroundColor); caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack};"><font color="#000000">${address}</font></span></div>`
+      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="background-color: var(--backgroundColor); white-space: pre-wrap; font-family: ${encode(
+        fontStack
+      )};"><font color="#000000">${encode(address)}</font></span></div>`
     );
   }
 
@@ -96,34 +105,47 @@ const Home: NextPage = () => {
 
     if (phone) {
       signature.push(
-        `<span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack}; background-color: var(--backgroundColor);"><a href="tel:${phone.replace(
-          /\s/gu,
-          ''
-        )}">${phone}</a></span>`
+        `<span style="white-space: pre-wrap; font-family: ${encode(
+          fontStack
+        )}; background-color: var(--backgroundColor);"><a href="tel:${encode(
+          phone
+        )}">${encode(phone)}</a></span>`
       );
     }
 
     if (phone && (bookingLink || email)) {
       signature.push(
-        `<span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack};"> &bull; </span>`
+        `<span style="white-space: pre-wrap; font-family: ${encode(
+          fontStack
+        )};"> &bull; </span>`
       );
     }
 
     if (bookingLink) {
       signature.push(
-        `<span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack}; background-color: var(--backgroundColor);"><a href="${bookingLink}">Book a Call</a></span>`
+        `<span style="white-space: pre-wrap; font-family: ${encode(
+          fontStack
+        )}; background-color: var(--backgroundColor);"><a href="${encode(
+          bookingLink
+        )}">Book a Call</a></span>`
       );
     }
 
     if (bookingLink && email) {
       signature.push(
-        `<span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack};"> &bull; </span>`
+        `<span style="white-space: pre-wrap; font-family: ${encode(
+          fontStack
+        )};"> &bull; </span>`
       );
     }
 
     if (email) {
       signature.push(
-        `<span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack}; background-color: var(--backgroundColor);"><a href="mailto:${email}">${email}</a></span>`
+        `<span style="white-space: pre-wrap; font-family: ${encode(
+          fontStack
+        )}; background-color: var(--backgroundColor);"><a href="mailto:${encode(
+          email
+        )}">${encode(email)}</a></span>`
       );
     }
 
@@ -132,8 +154,12 @@ const Home: NextPage = () => {
 
   if (footer) {
     signature.push(
-      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack};"><font color="#000000"><br></font></span></div>`,
-      `<div style="orphans: 2; widows: 2;" dir="auto"><font style="font-size: 10px;" color="#808080"><span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack};">${footer}</span></font></div>`
+      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="white-space: pre-wrap; font-family: ${encode(
+        fontStack
+      )};"><font color="#000000"><br></font></span></div>`,
+      `<div style="orphans: 2; widows: 2;" dir="auto"><font style="font-size: 10px;" color="#808080"><span style="white-space: pre-wrap; font-family: ${encode(
+        fontStack
+      )};">${encode(footer)}</span></font></div>`
     );
   }
 
@@ -255,7 +281,7 @@ const Home: NextPage = () => {
         <SyntaxHighlighter
           language="javascript"
           style={tomorrow as object}
-          customStyle={{ height: '50%', margin: 0 }}
+          customStyle={{ height: '50%', margin: 0, fontSize: '14px' }}
           wrapLines
           wrapLongLines
         >
