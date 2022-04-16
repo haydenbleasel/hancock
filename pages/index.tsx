@@ -5,6 +5,23 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import Input from '../components/input';
 
+const defaultFontStack = [
+  'Inter',
+  'system-ui',
+  '-apple-system',
+  'Segoe UI',
+  'Roboto',
+  'Helvetica Neue',
+  'Arial',
+  'Noto Sans',
+  'Liberation Sans',
+  'sans-serif',
+  'Apple Color Emoji',
+  'Segoe UI Emoji',
+  'Segoe UI Symbol',
+  'Noto Color Emoji',
+].join(', ');
+
 const Home: NextPage = () => {
   const [name, setName] = useState<string>('Hayden Bleasel');
   const [email, setEmail] = useState<string>('');
@@ -23,6 +40,7 @@ const Home: NextPage = () => {
   const [footer, setFooter] = useState<string>(
     `CONFIDENTIALITY NOTICE — This email with all attachment(s) is solely for the use of the individual or entity to which it was intended. Unless otherwise indicated, it contains information that is confidential, privileged and/or exempt from disclosure under applicable law. If you are not the intended recipient, any disclosure, copying, distribution, or action taken based on this email is strictly prohibited. If you have received this email in error, please notify the sender of the error and delete the email. Thank you.`
   );
+  const [fontStack, setFontStack] = useState<string>(defaultFontStack);
 
   const signature: string[] = [];
 
@@ -35,7 +53,7 @@ const Home: NextPage = () => {
 
   if (name) {
     signature.push(
-      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap;"><b style="color: rgb(0, 0, 0);">${name}</b>`
+      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack};"><b style="color: rgb(0, 0, 0);">${name}</b>`
     );
 
     if (pronouns) {
@@ -47,7 +65,7 @@ const Home: NextPage = () => {
 
   if (role || company) {
     signature.push(
-      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap;"><font color="#000000">`
+      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack};"><font color="#000000">`
     );
 
     if (role) {
@@ -67,7 +85,7 @@ const Home: NextPage = () => {
 
   if (address) {
     signature.push(
-      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="background-color: var(--backgroundColor); caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap;"><font color="#000000">${address}</font></span></div>`
+      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="background-color: var(--backgroundColor); caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack};"><font color="#000000">${address}</font></span></div>`
     );
   }
 
@@ -78,34 +96,34 @@ const Home: NextPage = () => {
 
     if (phone) {
       signature.push(
-        `<span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; background-color: var(--backgroundColor);"><a href="tel:${phone.replace(
+        `<span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack}; background-color: var(--backgroundColor);"><a href="tel:${phone.replace(
           /\s/gu,
           ''
         )}">${phone}</a></span>`
       );
     }
 
-    if (phone && bookingLink) {
+    if (phone && (bookingLink || email)) {
       signature.push(
-        '<span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap;"> &bull; </span>'
+        `<span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack};"> &bull; </span>`
       );
     }
 
     if (bookingLink) {
       signature.push(
-        `<span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; background-color: var(--backgroundColor);"><a href="${bookingLink}">Book a Call</a></span>`
+        `<span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack}; background-color: var(--backgroundColor);"><a href="${bookingLink}">Book a Call</a></span>`
       );
     }
 
     if (bookingLink && email) {
       signature.push(
-        '<span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap;"> &bull; </span>'
+        `<span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack};"> &bull; </span>`
       );
     }
 
     if (email) {
       signature.push(
-        `<span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; background-color: var(--backgroundColor);"><a href="mailto:${email}">${email}</a></span>`
+        `<span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack}; background-color: var(--backgroundColor);"><a href="mailto:${email}">${email}</a></span>`
       );
     }
 
@@ -114,8 +132,8 @@ const Home: NextPage = () => {
 
   if (footer) {
     signature.push(
-      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap;"><font color="#000000"><br></font></span></div>`,
-      `<div style="orphans: 2; widows: 2;" dir="auto"><font style="font-size: 10px;" color="#808080"><span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap;">${footer}</span></font></div>`
+      `<div style="orphans: 2; widows: 2;" dir="auto"><span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack};"><font color="#000000"><br></font></span></div>`,
+      `<div style="orphans: 2; widows: 2;" dir="auto"><font style="font-size: 10px;" color="#808080"><span style="caret-color: rgb(51, 51, 51); letter-spacing: -0.04100000113248825px; white-space: pre-wrap; font-family: ${fontStack};">${footer}</span></font></div>`
     );
   }
 
@@ -233,6 +251,14 @@ const Home: NextPage = () => {
             value={footer}
             onChangeText={setFooter}
             placeholder="Start typing..."
+          />
+
+          <Input
+            label="Font Stack"
+            id="fontStack"
+            value={fontStack}
+            onChangeText={setFontStack}
+            placeholder={defaultFontStack}
           />
         </div>
       </main>
