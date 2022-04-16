@@ -30,6 +30,8 @@ const Home: NextPage = () => {
   const [pronouns, setPronouns] = useState<string>('He / Him');
   const [role, setRole] = useState<string>('Chief Product Officer');
   const [phone, setPhone] = useState<string>('');
+  const [mobile, setMobile] = useState<string>('');
+  const [fax, setFax] = useState<string>('');
   const [bookingLink, setBookingLink] = useState<string>('');
   const [company, setCompany] = useState<string>('Acme, Inc.');
   const [address, setAddress] = useState<string>(
@@ -98,7 +100,7 @@ const Home: NextPage = () => {
     );
   }
 
-  if (phone || bookingLink || email) {
+  if (phone || mobile || fax) {
     signature.push(
       `<div style="orphans: 2; widows: 2;" dir="auto"><font color="#000000">`
     );
@@ -109,17 +111,55 @@ const Home: NextPage = () => {
       signature.push(
         `<span style="font-family: ${encode(
           fontStack
-        )}; background-color: var(--backgroundColor);"><a href="tel:${encode(
+        )}; background-color: var(--backgroundColor);">P: <a href="tel:${encode(
           phoneNumber
         )}">${encode(phone)}</a></span>`
       );
     }
 
-    if (phone && (bookingLink || email)) {
+    if (phone && (mobile || fax)) {
       signature.push(
         `<span style="font-family: ${encode(fontStack)};"> &bull; </span>`
       );
     }
+
+    if (mobile) {
+      const mobileNumber = mobile.replace(/\s/gu, '');
+
+      signature.push(
+        `<span style="font-family: ${encode(
+          fontStack
+        )}; background-color: var(--backgroundColor);">M: <a href="tel:${encode(
+          mobileNumber
+        )}">${encode(mobile)}</a></span>`
+      );
+    }
+
+    if (mobile && fax) {
+      signature.push(
+        `<span style="font-family: ${encode(fontStack)};"> &bull; </span>`
+      );
+    }
+
+    if (fax) {
+      const faxNumber = fax.replace(/\s/gu, '');
+
+      signature.push(
+        `<span style="font-family: ${encode(
+          fontStack
+        )}; background-color: var(--backgroundColor);">F: <a href="tel:${encode(
+          faxNumber
+        )}">${encode(fax)}</a></span>`
+      );
+    }
+
+    signature.push('</font></div>');
+  }
+
+  if (bookingLink || email) {
+    signature.push(
+      `<div style="orphans: 2; widows: 2;" dir="auto"><font color="#000000">`
+    );
 
     if (bookingLink) {
       signature.push(
@@ -218,6 +258,22 @@ const Home: NextPage = () => {
             label="Phone number"
             value={phone}
             onChangeText={setPhone}
+            placeholder="+1 234 567 890"
+            type="tel"
+          />
+
+          <Input
+            label="Mobile number"
+            value={mobile}
+            onChangeText={setMobile}
+            placeholder="+61 234 567 890"
+            type="tel"
+          />
+
+          <Input
+            label="Fax number"
+            value={fax}
+            onChangeText={setFax}
             placeholder="+1 234 567 890"
             type="tel"
           />
