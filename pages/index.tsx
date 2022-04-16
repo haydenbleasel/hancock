@@ -5,6 +5,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { encode } from 'he';
 import Input from '../components/input';
+import Textarea from '../components/textarea';
 
 const defaultFontStack = [
   'Inter',
@@ -28,7 +29,7 @@ const Home: NextPage = () => {
   const [email, setEmail] = useState<string>('');
   const [pronouns, setPronouns] = useState<string>('He / Him');
   const [role, setRole] = useState<string>('Chief Product Officer');
-  const [phone, setPhone] = useState<string>('+61 234 567 890');
+  const [phone, setPhone] = useState<string>('');
   const [bookingLink, setBookingLink] = useState<string>('');
   const [company, setCompany] = useState<string>('Acme, Inc.');
   const [address, setAddress] = useState<string>(
@@ -42,7 +43,6 @@ const Home: NextPage = () => {
     `CONFIDENTIALITY NOTICE — This email with all attachment(s) is solely for the use of the individual or entity to which it was intended. Unless otherwise indicated, it contains information that is confidential, privileged and/or exempt from disclosure under applicable law. If you are not the intended recipient, any disclosure, copying, distribution, or action taken based on this email is strictly prohibited. If you have received this email in error, please notify the sender of the error and delete the email. Thank you.`
   );
   const [fontStack, setFontStack] = useState<string>(defaultFontStack);
-
   const signature: string[] = [];
 
   if (logo) {
@@ -217,7 +217,7 @@ const Home: NextPage = () => {
           />
 
           <Input
-            label="Phone number (optional)"
+            label="Phone number"
             value={phone}
             onChangeText={setPhone}
             placeholder="+1 234 567 890"
@@ -225,7 +225,7 @@ const Home: NextPage = () => {
           />
 
           <Input
-            label="Call booking link (optional)"
+            label="Call booking link"
             value={bookingLink}
             onChangeText={setBookingLink}
             placeholder="https://example.com/booking"
@@ -261,7 +261,7 @@ const Home: NextPage = () => {
             type="url"
           />
 
-          <Input
+          <Textarea
             label="Footer"
             value={footer}
             onChangeText={setFooter}
