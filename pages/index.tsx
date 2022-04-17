@@ -45,7 +45,10 @@ const Home: NextPage = () => {
     `CONFIDENTIALITY NOTICE — This email with all attachment(s) is solely for the use of the individual or entity to which it was intended. Unless otherwise indicated, it contains information that is confidential, privileged and/or exempt from disclosure under applicable law. If you are not the intended recipient, any disclosure, copying, distribution, or action taken based on this email is strictly prohibited. If you have received this email in error, please notify the sender of the error and delete the email. Thank you.`
   );
   const [fontStack, setFontStack] = useState<string>(defaultFontStack);
+  const [primaryColor, setPrimaryColor] = useState<string>('#000000');
+  const [twitter, setTwitter] = useState<string>('haydenbleasel');
   const signature: string[] = [];
+  const parsedPrimaryColor = primaryColor === '' ? 'inherit' : primaryColor;
 
   if (logo) {
     signature.push(
@@ -94,7 +97,9 @@ const Home: NextPage = () => {
 
     if (company) {
       if (website) {
-        signature.push(`<a style="color: inherit" href="${encode(website)}">`);
+        signature.push(
+          `<a style="color: ${parsedPrimaryColor}" href="${encode(website)}">`
+        );
       }
 
       signature.push(company);
@@ -127,7 +132,7 @@ const Home: NextPage = () => {
       signature.push(
         `<span style="font-family: ${encode(
           fontStack
-        )}; background-color: var(--backgroundColor);">P: <a style="color: inherit" href="tel:${encode(
+        )}; background-color: var(--backgroundColor);">P: <a style="color: ${parsedPrimaryColor}" href="tel:${encode(
           phoneNumber
         )}">${encode(phone)}</a></span>`
       );
@@ -145,7 +150,7 @@ const Home: NextPage = () => {
       signature.push(
         `<span style="font-family: ${encode(
           fontStack
-        )}; background-color: var(--backgroundColor);">M: <a style="color: inherit" href="tel:${encode(
+        )}; background-color: var(--backgroundColor);">M: <a style="color: ${parsedPrimaryColor}" href="tel:${encode(
           mobileNumber
         )}">${encode(mobile)}</a></span>`
       );
@@ -163,7 +168,7 @@ const Home: NextPage = () => {
       signature.push(
         `<span style="font-family: ${encode(
           fontStack
-        )}; background-color: var(--backgroundColor);">F: <a style="color: inherit" href="tel:${encode(
+        )}; background-color: var(--backgroundColor);">F: <a style="color: ${parsedPrimaryColor}" href="tel:${encode(
           faxNumber
         )}">${encode(fax)}</a></span>`
       );
@@ -172,7 +177,7 @@ const Home: NextPage = () => {
     signature.push('</font></div>');
   }
 
-  if (bookingLink || email) {
+  if (bookingLink || email || twitter) {
     signature.push(
       `<div style="orphans: 2; widows: 2; font-size: 2px;" dir="auto"><br></div>`,
       `<div style="orphans: 2; widows: 2;" dir="auto"><font color="#000000">`
@@ -182,13 +187,13 @@ const Home: NextPage = () => {
       signature.push(
         `<span style="font-family: ${encode(
           fontStack
-        )}; background-color: var(--backgroundColor);"><a style="color: inherit" href="${encode(
+        )}; background-color: var(--backgroundColor);"><a style="color: ${parsedPrimaryColor}" href="${encode(
           bookingLink
         )}">Book a Call</a></span>`
       );
     }
 
-    if (bookingLink && email) {
+    if (bookingLink && (email || twitter)) {
       signature.push(
         `<span style="font-family: ${encode(fontStack)};"> &bull; </span>`
       );
@@ -198,9 +203,25 @@ const Home: NextPage = () => {
       signature.push(
         `<span style="font-family: ${encode(
           fontStack
-        )}; background-color: var(--backgroundColor);"><a style="color: inherit" href="mailto:${encode(
+        )}; background-color: var(--backgroundColor);"><a style="color: ${parsedPrimaryColor}" href="mailto:${encode(
           email
         )}">${encode(email)}</a></span>`
+      );
+    }
+
+    if (email && twitter) {
+      signature.push(
+        `<span style="font-family: ${encode(fontStack)};"> &bull; </span>`
+      );
+    }
+
+    if (twitter) {
+      signature.push(
+        `<span style="font-family: ${encode(
+          fontStack
+        )}; background-color: var(--backgroundColor);"><a style="color: ${parsedPrimaryColor}" href="https://twitter.com/${encode(
+          twitter
+        )}">@${encode(twitter)}</a></span>`
       );
     }
 
@@ -344,6 +365,20 @@ const Home: NextPage = () => {
             value={fontStack}
             onChangeText={setFontStack}
             placeholder={defaultFontStack}
+          />
+
+          <Input
+            label="Primary Color"
+            value={primaryColor}
+            onChangeText={setPrimaryColor}
+            placeholder="#000000"
+          />
+
+          <Input
+            label="Twitter"
+            value={twitter}
+            onChangeText={setTwitter}
+            placeholder="haydenbleasel"
           />
         </div>
 
