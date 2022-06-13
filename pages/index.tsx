@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { encode } from 'he';
+import { useRouter } from 'next/dist/client/router';
 import Input from '../components/input';
 import Textarea from '../components/textarea';
 
@@ -49,6 +50,75 @@ const Home: NextPage = () => {
   const [twitter, setTwitter] = useState<string>('haydenbleasel');
   const signature: string[] = [];
   const parsedPrimaryColor = primaryColor === '' ? 'inherit' : primaryColor;
+  const { isReady, query } = useRouter();
+
+  useEffect(() => {
+    if (isReady) {
+      if (query.name && typeof query.name === 'string') {
+        setName(query.name);
+      }
+
+      if (query.email && typeof query.email === 'string') {
+        setEmail(query.email);
+      }
+
+      if (query.pronouns && typeof query.pronouns === 'string') {
+        setPronouns(query.pronouns);
+      }
+
+      if (query.role && typeof query.role === 'string') {
+        setRole(query.role);
+      }
+
+      if (query.phone && typeof query.phone === 'string') {
+        setPhone(query.phone);
+      }
+
+      if (query.mobile && typeof query.mobile === 'string') {
+        setMobile(query.mobile);
+      }
+
+      if (query.fax && typeof query.fax === 'string') {
+        setFax(query.fax);
+      }
+
+      if (query.bookingLink && typeof query.bookingLink === 'string') {
+        setBookingLink(query.bookingLink);
+      }
+
+      if (query.company && typeof query.company === 'string') {
+        setCompany(query.company);
+      }
+
+      if (query.address && typeof query.address === 'string') {
+        setAddress(query.address);
+      }
+
+      if (query.website && typeof query.website === 'string') {
+        setWebsite(query.website);
+      }
+
+      if (query.logo && typeof query.logo === 'string') {
+        setLogo(query.logo);
+      }
+
+      if (query.footer && typeof query.footer === 'string') {
+        setFooter(query.footer);
+      }
+
+      if (query.fontStack && typeof query.fontStack === 'string') {
+        setFontStack(query.fontStack);
+      }
+
+      if (query.primaryColor && typeof query.primaryColor === 'string') {
+        setPrimaryColor(query.primaryColor);
+      }
+
+      if (query.twitter && typeof query.twitter === 'string') {
+        setTwitter(query.twitter);
+      }
+    }
+  }, [isReady, query]);
 
   if (logo) {
     signature.push(
