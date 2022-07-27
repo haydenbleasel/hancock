@@ -7,6 +7,7 @@ import { encode } from 'he';
 import { useRouter } from 'next/dist/client/router';
 import Input from '../components/input';
 import Textarea from '../components/textarea';
+import useAnalytics from '../hooks/useAnalytics';
 
 const defaultFontStack = [
   'Inter',
@@ -51,6 +52,7 @@ const Home: NextPage = () => {
   const signature: string[] = [];
   const parsedPrimaryColor = primaryColor === '' ? 'inherit' : primaryColor;
   const { isReady, query } = useRouter();
+  useAnalytics();
 
   useEffect(() => {
     if (isReady) {
