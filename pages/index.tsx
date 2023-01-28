@@ -1,12 +1,16 @@
+import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import type { SyntaxHighlighterProps } from 'react-syntax-highlighter';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { encode } from 'he';
 import { useRouter } from 'next/dist/client/router';
 import Input from '../components/input';
 import Textarea from '../components/textarea';
+
+const Highlighter = SyntaxHighlighter as unknown as FC<SyntaxHighlighterProps>;
 
 const defaultFontStack = [
   'Inter',
@@ -458,15 +462,15 @@ const Home: NextPage = () => {
       </main>
 
       <div className="h-screen">
-        <SyntaxHighlighter
+        <Highlighter
           language="javascript"
-          style={tomorrow as object}
+          style={tomorrow}
           customStyle={{ height: '50%', margin: 0, fontSize: '14px' }}
           wrapLines
           wrapLongLines
         >
           {signature.join('')}
-        </SyntaxHighlighter>
+        </Highlighter>
 
         <div className="h-1/2 border-l border-gray-200 p-8">
           <iframe
