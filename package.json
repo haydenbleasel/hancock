@@ -19,7 +19,7 @@
     "slugify": "^1.6.5"
   },
   "devDependencies": {
-    "@beskar-labs/harmony": "^2.0.8",
+    "@beskar-labs/harmony": "^2.0.10",
     "@types/he": "^1.1.2",
     "@types/react": "18.0.27",
     "@types/react-syntax-highlighter": "^15.5.6",
