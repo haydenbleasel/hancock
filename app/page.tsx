@@ -1,18 +1,26 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Head from 'next/head';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { Snippet } from '@beskar-labs/gravity/snippet';
 import { encode } from 'he';
 import { useSearchParams } from 'next/navigation';
-import Input from '../components/input';
-import Textarea from '../components/textarea';
-import type { SyntaxHighlighterProps } from 'react-syntax-highlighter';
+import { Input } from '@beskar-labs/gravity/input';
+import { Textarea } from '@beskar-labs/gravity/textarea';
 import type { NextPage } from 'next';
-import type { FC } from 'react';
 
-const Highlighter = SyntaxHighlighter as unknown as FC<SyntaxHighlighterProps>;
+{
+  /*
+   * <Head>
+   * <title>Hancock | Simple Email Signature Generator</title>
+   * <meta
+   * name="description"
+   * content="Enter your details below to generate your email signature."
+   * />
+   * <link rel="icon" href="/favicon.ico" />
+   * <meta name="robots" content="noindex" />
+   * </Head>;
+   */
+}
 
 const defaultFontStack = [
   'Inter',
@@ -320,18 +328,8 @@ const Home: NextPage = () => {
   }
 
   return (
-    <div className="flex">
-      <Head>
-        <title>Hancock | Simple Email Signature Generator</title>
-        <meta
-          name="description"
-          content="Enter your details below to generate your email signature."
-        />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="robots" content="noindex" />
-      </Head>
-
-      <main className="grid h-screen w-full max-w-[520px] shrink-0 gap-8 self-start overflow-y-auto p-6">
+    <div className="flex h-full gap-4">
+      <main className="grid h-full w-full max-w-[520px] shrink-0 gap-8 self-start overflow-y-auto rounded border border-neutral-200 bg-white p-6">
         <div>
           <h1 className="mb-2 text-3xl font-semibold text-gray-900">
             Email Signature Generator
@@ -467,18 +465,17 @@ const Home: NextPage = () => {
         </p>
       </main>
 
-      <div className="h-screen">
-        <Highlighter
+      <div className="flex h-full flex-col gap-4">
+        <Snippet
           language="javascript"
-          style={tomorrow}
-          customStyle={{ height: '50%', margin: 0, fontSize: '14px' }}
           wrapLines
           wrapLongLines
+          className="flex h-1/2 overflow-auto"
         >
           {signature.join('')}
-        </Highlighter>
+        </Snippet>
 
-        <div className="h-1/2 border-l border-gray-200 p-8">
+        <div className="h-1/2 rounded border border-neutral-200 bg-white p-8">
           <iframe
             srcDoc={signature.join('')}
             className="h-full w-full"
