@@ -6,7 +6,7 @@ import { encode } from 'he';
 import { useSearchParams } from 'next/navigation';
 import { Input } from '@beskar-labs/gravity/input';
 import { Textarea } from '@beskar-labs/gravity/textarea';
-import type { NextPage } from 'next';
+import type { FC } from 'react';
 
 const defaultFontStack = [
   'Inter',
@@ -25,7 +25,7 @@ const defaultFontStack = [
   'Noto Color Emoji',
 ].join(', ');
 
-const Home: NextPage = () => {
+const Home: FC = () => {
   const [name, setName] = useState<string>('Hayden Bleasel');
   const [email, setEmail] = useState<string>('');
   const [pronouns, setPronouns] = useState<string>('He / Him');
@@ -417,7 +417,7 @@ const Home: NextPage = () => {
 
       <div className="flex h-full flex-col gap-4">
         <Snippet
-          language="javascript"
+          language="html"
           wrapLines
           wrapLongLines
           className="flex h-1/2 overflow-auto"
@@ -425,7 +425,7 @@ const Home: NextPage = () => {
           {signature.join('')}
         </Snippet>
 
-        <div className="h-1/2 rounded border border-neutral-200 bg-white p-8">
+        <div className="h-1/2 rounded border border-neutral-200 bg-white p-4">
           <iframe
             srcDoc={signature.join('')}
             className="h-full w-full"
