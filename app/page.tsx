@@ -1,9 +1,11 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { encode } from 'he';
-import { useRouter } from 'next/dist/client/router';
+import { useSearchParams } from 'next/navigation';
 import Input from '../components/input';
 import Textarea from '../components/textarea';
 import type { SyntaxHighlighterProps } from 'react-syntax-highlighter';
@@ -54,75 +56,79 @@ const Home: NextPage = () => {
   const [twitter, setTwitter] = useState<string>('haydenbleasel');
   const signature: string[] = [];
   const parsedPrimaryColor = primaryColor === '' ? 'inherit' : primaryColor;
-  const { isReady, query } = useRouter();
+  const query = useSearchParams();
 
   useEffect(() => {
-    if (isReady) {
-      if (query.name && typeof query.name === 'string') {
-        setName(query.name);
-      }
-
-      if (query.email && typeof query.email === 'string') {
-        setEmail(query.email);
-      }
-
-      if (query.pronouns && typeof query.pronouns === 'string') {
-        setPronouns(query.pronouns);
-      }
-
-      if (query.role && typeof query.role === 'string') {
-        setRole(query.role);
-      }
-
-      if (query.phone && typeof query.phone === 'string') {
-        setPhone(query.phone);
-      }
-
-      if (query.mobile && typeof query.mobile === 'string') {
-        setMobile(query.mobile);
-      }
-
-      if (query.fax && typeof query.fax === 'string') {
-        setFax(query.fax);
-      }
-
-      if (query.bookingLink && typeof query.bookingLink === 'string') {
-        setBookingLink(query.bookingLink);
-      }
-
-      if (query.company && typeof query.company === 'string') {
-        setCompany(query.company);
-      }
-
-      if (query.address && typeof query.address === 'string') {
-        setAddress(query.address);
-      }
-
-      if (query.website && typeof query.website === 'string') {
-        setWebsite(query.website);
-      }
-
-      if (query.logo && typeof query.logo === 'string') {
-        setLogo(query.logo);
-      }
-
-      if (query.footer && typeof query.footer === 'string') {
-        setFooter(query.footer);
-      }
-
-      if (query.fontStack && typeof query.fontStack === 'string') {
-        setFontStack(query.fontStack);
-      }
-
-      if (query.primaryColor && typeof query.primaryColor === 'string') {
-        setPrimaryColor(query.primaryColor);
-      }
-
-      if (query.twitter && typeof query.twitter === 'string') {
-        setTwitter(query.twitter);
-      }
+    if (query.get('name') && typeof query.get('name') === 'string') {
+      setName(query.get('name'));
     }
-  }, [isReady, query]);
+
+    if (query.get('email') && typeof query.get('email') === 'string') {
+      setEmail(query.get('email'));
+    }
+
+    if (query.get('pronouns') && typeof query.get('pronouns') === 'string') {
+      setPronouns(query.get('pronouns'));
+    }
+
+    if (query.get('role') && typeof query.get('role') === 'string') {
+      setRole(query.get('role'));
+    }
+
+    if (query.get('phone') && typeof query.get('phone') === 'string') {
+      setPhone(query.get('phone'));
+    }
+
+    if (query.get('mobile') && typeof query.get('mobile') === 'string') {
+      setMobile(query.get('mobile'));
+    }
+
+    if (query.get('fax') && typeof query.get('fax') === 'string') {
+      setFax(query.get('fax'));
+    }
+
+    if (
+      query.get('bookingLink') &&
+      typeof query.get('bookingLink') === 'string'
+    ) {
+      setBookingLink(query.get('bookingLink'));
+    }
+
+    if (query.get('company') && typeof query.get('company') === 'string') {
+      setCompany(query.get('company'));
+    }
+
+    if (query.get('address') && typeof query.get('address') === 'string') {
+      setAddress(query.get('address'));
+    }
+
+    if (query.get('website') && typeof query.get('website') === 'string') {
+      setWebsite(query.get('website'));
+    }
+
+    if (query.get('logo') && typeof query.get('logo') === 'string') {
+      setLogo(query.get('logo'));
+    }
+
+    if (query.get('footer') && typeof query.get('footer') === 'string') {
+      setFooter(query.get('footer'));
+    }
+
+    if (query.get('fontStack') && typeof query.get('fontStack') === 'string') {
+      setFontStack(query.get('fontStack'));
+    }
+
+    if (
+      query.get('primaryColor') &&
+      typeof query.get('primaryColor') === 'string'
+    ) {
+      setPrimaryColor(query.get('primaryColor'));
+    }
+
+    if (query.get('twitter') && typeof query.get('twitter') === 'string') {
+      setTwitter(query.get('twitter'));
+    }
+  }, [query]);
 
   if (logo) {
     signature.push(
