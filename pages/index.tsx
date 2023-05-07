@@ -1,14 +1,14 @@
-import type { FC } from 'react';
 import { useEffect, useState } from 'react';
-import type { NextPage } from 'next';
 import Head from 'next/head';
-import type { SyntaxHighlighterProps } from 'react-syntax-highlighter';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { encode } from 'he';
 import { useRouter } from 'next/dist/client/router';
 import Input from '../components/input';
 import Textarea from '../components/textarea';
+import type { SyntaxHighlighterProps } from 'react-syntax-highlighter';
+import type { NextPage } from 'next';
+import type { FC } from 'react';
 
 const Highlighter = SyntaxHighlighter as unknown as FC<SyntaxHighlighterProps>;
 

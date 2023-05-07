@@ -1,5 +1,5 @@
-import type { FC, HTMLProps } from 'react';
 import slugify from 'slugify';
+import type { FC, HTMLProps } from 'react';
 
 type TextareaProps = HTMLProps<HTMLTextAreaElement> & {
   onChangeText: (text: string) => void;
