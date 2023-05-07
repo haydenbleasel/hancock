@@ -8,20 +8,6 @@ import { Input } from '@beskar-labs/gravity/input';
 import { Textarea } from '@beskar-labs/gravity/textarea';
 import type { NextPage } from 'next';
 
-{
-  /*
-   * <Head>
-   * <title>Hancock | Simple Email Signature Generator</title>
-   * <meta
-   * name="description"
-   * content="Enter your details below to generate your email signature."
-   * />
-   * <link rel="icon" href="/favicon.ico" />
-   * <meta name="robots" content="noindex" />
-   * </Head>;
-   */
-}
-
 const defaultFontStack = [
   'Inter',
   'system-ui',
