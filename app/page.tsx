@@ -40,7 +40,7 @@ const Home: NextPage = () => {
   );
   const [website, setWebsite] = useState<string>('https://haydenbleasel.com/');
   const [logo, setLogo] = useState<string>(
-    'https://haydenbleasel.com/apple-touch-icon.png'
+    'https://haydenbleasel.com/email-signature.png'
   );
   const [footer, setFooter] = useState<string>(
     `CONFIDENTIALITY NOTICE — This email with all attachment(s) is solely for the use of the individual or entity to which it was intended. Unless otherwise indicated, it contains information that is confidential, privileged and/or exempt from disclosure under applicable law. If you are not the intended recipient, any disclosure, copying, distribution, or action taken based on this email is strictly prohibited. If you have received this email in error, please notify the sender of the error and delete the email. Thank you.`
