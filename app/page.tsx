@@ -415,7 +415,7 @@ const Home: FC = () => {
         </p>
       </main>
 
-      <div className="flex h-full flex-col gap-4">
+      <div className="flex h-full w-full flex-col gap-4">
         <Snippet
           language="html"
           wrapLines
