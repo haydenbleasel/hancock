@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@beskar-labs/gravity": "^0.2.8",
     "@vercel/analytics": "^1.0.1",
     "he": "^1.2.0",
     "next": "13.4.1",
@@ -19,7 +18,6 @@
     "slugify": "^1.6.6"
   },
   "devDependencies": {
-    "@beskar-labs/harmony": "^2.2.8",
     "@types/he": "^1.2.0",
     "@types/react": "18.2.6",
     "autoprefixer": "^10.4.14",
