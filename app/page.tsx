@@ -1,9 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Snippet } from '@beskar-labs/gravity/snippet';
 import { encode } from 'he';
 import { useSearchParams } from 'next/navigation';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import type { FC } from 'react';
@@ -416,14 +417,15 @@ const Home: FC = () => {
       </main>
 
       <div className="flex h-full w-full flex-col gap-4">
-        <Snippet
+        <SyntaxHighlighter
           language="html"
           wrapLines
           wrapLongLines
           className="flex h-1/2 overflow-auto"
+          style={nord}
         >
           {signature.join('')}
-        </Snippet>
+        </SyntaxHighlighter>
 
         <div className="h-1/2 rounded border border-zinc-200 bg-white p-4">
           <iframe
