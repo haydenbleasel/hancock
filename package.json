@@ -16,6 +16,7 @@
     "clsx": "^2.0.0",
     "he": "^1.2.0",
     "next": "14.0.4",
+    "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-feather": "^2.0.10",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "@types/he": "^1.2.3",
     "@types/react": "18.2.42",
+    "@types/react-syntax-highlighter": "^15.5.11",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.55.0",
     "eslint-config-harmony": "^3.1.4",
