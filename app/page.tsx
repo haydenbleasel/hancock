@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 import { Snippet } from '@beskar-labs/gravity/snippet';
 import { encode } from 'he';
 import { useSearchParams } from 'next/navigation';
-import { Input } from '@beskar-labs/gravity/input';
-import { Textarea } from '@beskar-labs/gravity/textarea';
 import type { FC } from 'react';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 const defaultFontStack = [
   'Inter',
