@@ -5,8 +5,8 @@ import { encode } from 'he';
 import { useSearchParams } from 'next/navigation';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
+import { Input } from '@/app/components/input';
+import { Textarea } from '@/app/components/textarea';
 import type { FC } from 'react';
 
 const defaultFontStack = [
