@@ -280,7 +280,7 @@ const Home: FC = () => {
 
   return (
     <div className="flex h-full gap-4">
-      <main className="grid h-full w-full max-w-[520px] shrink-0 gap-8 self-start overflow-y-auto rounded border border-zinc-200 bg-white p-6">
+      <main className="grid h-full w-full max-w-[520px] shrink-0 gap-8 self-start overflow-y-auto rounded border border-zinc-200 bg-white dark:bg-zinc-950 p-6">
         <div>
           <h1 className="mb-2 text-3xl font-semibold text-gray-900">
             Email Signature Generator
@@ -427,7 +427,7 @@ const Home: FC = () => {
           {signature.join('')}
         </SyntaxHighlighter>
 
-        <div className="h-1/2 rounded border border-zinc-200 bg-white p-4">
+        <div className="h-1/2 rounded border border-zinc-200 bg-white dark:bg-zinc-950 p-4">
           <iframe
             srcDoc={signature.join('')}
             className="h-full w-full"
