@@ -8,9 +8,9 @@ export const metadata: Metadata = {
   description: 'Enter your details below to generate your email signature.',
 };
 
-const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
+const RootLayout: FC<{ readonly children: ReactNode }> = ({ children }) => (
   <html lang="en">
-    <body className="h-screen bg-neutral-100 p-4">
+    <body className="h-screen bg-zinc-100 p-4">
       {children}
       <Analytics />
     </body>
