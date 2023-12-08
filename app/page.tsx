@@ -433,7 +433,7 @@ const Home: FC = () => {
       </div>
 
       <div className="flex h-full w-full flex-col gap-4">
-        <Card className="h-1/2 overflow-auto">
+        <Card className="h-1/2 overflow-auto bg-zinc-900">
           <SyntaxHighlighter
             language="html"
             wrapLines
