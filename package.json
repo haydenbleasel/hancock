@@ -30,6 +30,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.3",
     "@types/he": "^1.2.3",
+    "@types/node": "^22.7.4",
     "@types/react": "18.3.10",
     "@types/react-syntax-highlighter": "^15.5.13",
     "autoprefixer": "^10.4.20",

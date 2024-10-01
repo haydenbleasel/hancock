@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import type { FC } from 'react';
+import { type FC, Suspense } from 'react';
 import { Editor } from './components/editor';
 import { Navbar } from './components/navbar';
 
@@ -11,7 +11,9 @@ export const metadata: Metadata = {
 const Home: FC = () => (
   <div className="flex h-full w-full flex-col gap-4 overflow-hidden">
     <Navbar />
-    <Editor />
+    <Suspense fallback={null}>
+      <Editor />
+    </Suspense>
   </div>
 );
 
