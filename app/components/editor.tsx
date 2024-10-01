@@ -3,8 +3,8 @@
 import { Input } from '@/app/components/input';
 import { Textarea } from '@/app/components/textarea';
 import { encode } from 'he';
-import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { parseAsString, useQueryState } from 'nuqs';
+import { useState } from 'react';
 import type { FC } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
@@ -28,100 +28,68 @@ const defaultFontStack = [
 ].join(', ');
 
 export const Editor: FC = () => {
-  const [name, setName] = useState<string>('Hayden Bleasel');
-  const [email, setEmail] = useState<string>('');
-  const [pronouns, setPronouns] = useState<string>('He / Him');
-  const [role, setRole] = useState<string>('Chief Product Officer');
-  const [phone, setPhone] = useState<string>('');
-  const [mobile, setMobile] = useState<string>('');
-  const [fax, setFax] = useState<string>('');
-  const [bookingLink, setBookingLink] = useState<string>('');
-  const [company, setCompany] = useState<string>('Acme, Inc.');
-  const [address, setAddress] = useState<string>(
-    '123 Charming Avenue, New York'
+  const [name, setName] = useQueryState<string>(
+    'name',
+    parseAsString.withDefault('Hayden Bleasel')
   );
-  const [website, setWebsite] = useState<string>('https://haydenbleasel.com/');
-  const [logo, setLogo] = useState<string>(
-    'https://haydenbleasel.com/email-signature.png'
+  const [email, setEmail] = useQueryState<string>(
+    'email',
+    parseAsString.withDefault('')
   );
-  const [footer, setFooter] = useState<string>(
-    'CONFIDENTIALITY NOTICE — This email with all attachment(s) is solely for the use of the individual or entity to which it was intended. Unless otherwise indicated, it contains information that is confidential, privileged and/or exempt from disclosure under applicable law. If you are not the intended recipient, any disclosure, copying, distribution, or action taken based on this email is strictly prohibited. If you have received this email in error, please notify the sender of the error and delete the email. Thank you.'
+  const [pronouns, setPronouns] = useQueryState<string>(
+    'pronouns',
+    parseAsString.withDefault('He / Him')
   );
-  const [fontStack, setFontStack] = useState<string>(defaultFontStack);
+  const [role, setRole] = useQueryState<string>(
+    'role',
+    parseAsString.withDefault('Chief Product Officer')
+  );
+  const [phone, setPhone] = useQueryState<string>(
+    'phone',
+    parseAsString.withDefault('')
+  );
+  const [mobile, setMobile] = useQueryState<string>(
+    'mobile',
+    parseAsString.withDefault('')
+  );
+  const [fax, setFax] = useQueryState<string>(
+    'fax',
+    parseAsString.withDefault('')
+  );
+  const [bookingLink, setBookingLink] = useQueryState<string>(
+    'bookingLink',
+    parseAsString.withDefault('')
+  );
+  const [company, setCompany] = useQueryState<string>(
+    'company',
+    parseAsString.withDefault('Acme, Inc.')
+  );
+  const [address, setAddress] = useQueryState<string>(
+    'address',
+    parseAsString.withDefault('123 Charming Avenue, New York')
+  );
+  const [website, setWebsite] = useQueryState<string>(
+    'website',
+    parseAsString.withDefault('https://haydenbleasel.com/')
+  );
+  const [logo, setLogo] = useQueryState<string>(
+    'logo',
+    parseAsString.withDefault('https://haydenbleasel.com/email-signature.png')
+  );
+  const [footer, setFooter] = useQueryState<string>(
+    'footer',
+    parseAsString.withDefault(
+      'CONFIDENTIALITY NOTICE — This email with all attachment(s) is solely for the use of the individual or entity to which it was intended. Unless otherwise indicated, it contains information that is confidential, privileged and/or exempt from disclosure under applicable law. If you are not the intended recipient, any disclosure, copying, distribution, or action taken based on this email is strictly prohibited. If you have received this email in error, please notify the sender of the error and delete the email. Thank you.'
+    )
+  );
+  const [fontStack, setFontStack] = useQueryState<string>(
+    'fontStack',
+    parseAsString.withDefault(defaultFontStack)
+  );
   const [primaryColor, setPrimaryColor] = useState<string>('#000000');
   const [twitter, setTwitter] = useState<string>('haydenbleasel');
   const signature: string[] = [];
   const parsedPrimaryColor = primaryColor === '' ? 'inherit' : primaryColor;
-  const query = useSearchParams();
-
-  // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <explanation>
-  useEffect(() => {
-    const queryName = query.get('name');
-    const queryEmail = query.get('email');
-    const queryPronouns = query.get('pronouns');
-    const queryRole = query.get('role');
-    const queryPhone = query.get('phone');
-    const queryMobile = query.get('mobile');
-    const queryFax = query.get('fax');
-    const queryBookingLink = query.get('bookingLink');
-    const queryCompany = query.get('company');
-    const queryAddress = query.get('address');
-    const queryWebsite = query.get('website');
-    const queryLogo = query.get('logo');
-    const queryFooter = query.get('footer');
-    const queryFontStack = query.get('fontStack');
-    const queryPrimaryColor = query.get('primaryColor');
-    const queryTwitter = query.get('twitter');
-
-    if (queryName) {
-      setName(queryName);
-    }
-    if (queryEmail) {
-      setEmail(queryEmail);
-    }
-    if (queryPronouns) {
-      setPronouns(queryPronouns);
-    }
-    if (queryRole) {
-      setRole(queryRole);
-    }
-    if (queryPhone) {
-      setPhone(queryPhone);
-    }
-    if (queryMobile) {
-      setMobile(queryMobile);
-    }
-    if (queryFax) {
-      setFax(queryFax);
-    }
-    if (queryBookingLink) {
-      setBookingLink(queryBookingLink);
-    }
-    if (queryCompany) {
-      setCompany(queryCompany);
-    }
-    if (queryAddress) {
-      setAddress(queryAddress);
-    }
-    if (queryWebsite) {
-      setWebsite(queryWebsite);
-    }
-    if (queryLogo) {
-      setLogo(queryLogo);
-    }
-    if (queryFooter) {
-      setFooter(queryFooter);
-    }
-    if (queryFontStack) {
-      setFontStack(queryFontStack);
-    }
-    if (queryPrimaryColor) {
-      setPrimaryColor(queryPrimaryColor);
-    }
-    if (queryTwitter) {
-      setTwitter(queryTwitter);
-    }
-  }, [query]);
 
   if (logo) {
     signature.push(
@@ -318,14 +286,14 @@ export const Editor: FC = () => {
           <div className="grid gap-6">
             <Input
               label="Full name"
-              value={name}
+              defaultValue={name}
               onChangeText={setName}
               placeholder="Jane Smith"
             />
 
             <Input
               label="Email address"
-              value={email}
+              defaultValue={email}
               onChangeText={setEmail}
               placeholder="janesmith@acme.com"
               type="email"
@@ -333,21 +301,21 @@ export const Editor: FC = () => {
 
             <Input
               label="Pronouns"
-              value={pronouns}
+              defaultValue={pronouns}
               onChangeText={setPronouns}
               placeholder="He / him"
             />
 
             <Input
               label="Role"
-              value={role}
+              defaultValue={role}
               onChangeText={setRole}
               placeholder="Product Manager"
             />
 
             <Input
               label="Phone number"
-              value={phone}
+              defaultValue={phone}
               onChangeText={setPhone}
               placeholder="+1 234 567 890"
               type="tel"
@@ -355,7 +323,7 @@ export const Editor: FC = () => {
 
             <Input
               label="Mobile number"
-              value={mobile}
+              defaultValue={mobile}
               onChangeText={setMobile}
               placeholder="+61 234 567 890"
               type="tel"
@@ -363,7 +331,7 @@ export const Editor: FC = () => {
 
             <Input
               label="Fax number"
-              value={fax}
+              defaultValue={fax}
               onChangeText={setFax}
               placeholder="+1 234 567 890"
               type="tel"
@@ -371,7 +339,7 @@ export const Editor: FC = () => {
 
             <Input
               label="Call booking link"
-              value={bookingLink}
+              defaultValue={bookingLink}
               onChangeText={setBookingLink}
               placeholder="https://example.com/booking"
               type="url"
@@ -379,28 +347,28 @@ export const Editor: FC = () => {
 
             <Input
               label="Company"
-              value={company}
+              defaultValue={company}
               onChangeText={setCompany}
               placeholder="Acme, Inc."
             />
 
             <Input
               label="Company Website"
-              value={website}
+              defaultValue={website}
               onChangeText={setWebsite}
               placeholder="https://acme.com/"
             />
 
             <Input
               label="Company Address"
-              value={address}
+              defaultValue={address}
               onChangeText={setAddress}
               placeholder="123 Charming Avenue, New York"
             />
 
             <Input
               label="Logo URL"
-              value={logo}
+              defaultValue={logo}
               onChangeText={setLogo}
               placeholder="https://acme.com/images/logo.png"
               type="url"
@@ -408,28 +376,28 @@ export const Editor: FC = () => {
 
             <Textarea
               label="Footer"
-              value={footer}
+              defaultValue={footer}
               onChangeText={setFooter}
               placeholder="Start typing..."
             />
 
             <Input
               label="Font Stack"
-              value={fontStack}
+              defaultValue={fontStack}
               onChangeText={setFontStack}
               placeholder={defaultFontStack}
             />
 
             <Input
               label="Primary Color"
-              value={primaryColor}
+              defaultValue={primaryColor}
               onChangeText={setPrimaryColor}
               placeholder="#000000"
             />
 
             <Input
               label="Twitter"
-              value={twitter}
+              defaultValue={twitter}
               onChangeText={setTwitter}
               placeholder="haydenbleasel"
             />
