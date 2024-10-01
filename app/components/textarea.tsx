@@ -1,10 +1,10 @@
 import { Label } from '@/components/ui/label';
-import { Textarea as uiTextarea } from '@/components/ui/textarea';
-import type { TextareaProps as uiTextareaProps } from '@/components/ui/textarea';
+import { Textarea as RawTextarea } from '@/components/ui/textarea';
+import type { TextareaProps as RawTextareaProps } from '@/components/ui/textarea';
 import { useId } from 'react';
 import type { ChangeEventHandler, FC } from 'react';
 
-type TextareaProps = uiTextareaProps & {
+type TextareaProps = RawTextareaProps & {
   readonly label: string;
   readonly onChangeText?: (text: string) => void;
 };
@@ -30,7 +30,7 @@ export const Textarea: FC<TextareaProps> = ({
   return (
     <fieldset className="flex flex-col gap-1.5">
       <Label htmlFor={id}>{label}</Label>
-      <uiTextarea id={id} onChange={handleOnChange} {...props} />
+      <RawTextarea id={id} onChange={handleOnChange} {...props} />
     </fieldset>
   );
 };
