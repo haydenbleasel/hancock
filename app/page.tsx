@@ -1,15 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { encode } from 'he';
-import { useSearchParams } from 'next/navigation';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { Input } from '@/app/components/input';
 import { Textarea } from '@/app/components/textarea';
 import { cn } from '@/lib/utils';
-import { Card } from './components/card';
+import { encode } from 'he';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import type { FC } from 'react';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { Card } from './components/card';
 
 const defaultFontStack = [
   'Inter',

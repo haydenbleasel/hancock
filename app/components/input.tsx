@@ -1,10 +1,10 @@
-import { useId } from 'react';
-import { Input as UIInput } from '@/components/ui/input';
+import { Input as uiInput } from '@/components/ui/input';
+import type { InputProps as uiInputProps } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import type { InputProps as UIInputProps } from '@/components/ui/input';
+import { useId } from 'react';
 import type { ChangeEventHandler, FC } from 'react';
 
-type InputProps = UIInputProps & {
+type InputProps = uiInputProps & {
   readonly label: string;
   readonly onChangeText?: (text: string) => void;
 };
@@ -30,7 +30,7 @@ export const Input: FC<InputProps> = ({
   return (
     <fieldset className="flex flex-col gap-1.5">
       <Label htmlFor={id}>{label}</Label>
-      <UIInput id={id} onChange={handleOnChange} {...props} />
+      <uiInput id={id} onChange={handleOnChange} {...props} />
     </fieldset>
   );
 };

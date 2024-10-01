@@ -1,9 +1,8 @@
 import '../styles/globals.css';
-// eslint-disable-next-line import/namespace, import/no-deprecated
 import { Analytics } from '@vercel/analytics/react';
-import { ThemeProvider } from './components/theme-provider';
 import type { Metadata } from 'next';
 import type { FC, ReactNode } from 'react';
+import { ThemeProvider } from './components/theme-provider';
 
 export const metadata: Metadata = {
   title: 'Hancock | Simple Email Signature Generator',
