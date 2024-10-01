@@ -79,8 +79,8 @@ importers:
         specifier: ^5.6.2
         version: 5.6.2
       ultracite:
-        specifier: 4.1.2
-        version: 4.1.2
+        specifier: 4.1.4
+        version: 4.1.4
 
 packages:
 
@@ -842,8 +842,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  ultracite@4.1.2:
-    resolution: {integrity: sha512-KJBckNVzWkABJ07Mckx5kgsKnL1+iQw3TCdRzx7gTKUAUVEzuRgWqppiKgQm2O69m9sunOYVo6SOugMZnzNcwA==}
+  ultracite@4.1.4:
+    resolution: {integrity: sha512-FwZ+yots6EEQaK1bhdu+LPtXVl1NMKoZf9w4cV5QwZw1HWYhTNap0iOqiY0rCbe5mGUGOJ2/iSB2HWPj1QwtxA==}
 
   update-browserslist-db@1.1.1:
     resolution: {integrity: sha512-R8UzCaa9Az+38REPiJ1tXlImTJXlVfgHZsglwBD/k6nj76ctsH1E3q4doGrukiLQd3sGQYu56r5+lo5r94l29A==}
@@ -1542,7 +1542,7 @@ snapshots:
 
   typescript@5.6.2: {}
 
-  ultracite@4.1.2: {}
+  ultracite@4.1.4: {}
 
   update-browserslist-db@1.1.1(browserslist@4.24.0):
     dependencies:
