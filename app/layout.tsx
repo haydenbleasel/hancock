@@ -9,9 +9,13 @@ export const metadata: Metadata = {
   description: 'Enter your details below to generate your email signature.',
 };
 
-const RootLayout: FC<{ readonly children: ReactNode }> = ({ children }) => (
+type RootLayoutProps = {
+  readonly children: ReactNode;
+};
+
+const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html lang="en">
-    <body className="h-screen bg-zinc-100 dark:bg-zinc-900 p-4">
+    <body className="h-screen bg-secondary p-4">
       <ThemeProvider
         attribute="class"
         defaultTheme="system"

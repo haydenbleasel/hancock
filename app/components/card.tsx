@@ -7,14 +7,7 @@ type CardProps = {
 };
 
 export const Card: FC<CardProps> = ({ children, className }) => (
-  <div
-    className={cn(
-      'rounded-lg border p-4',
-      'border-zinc-200 bg-white',
-      'dark:border-zinc-800 dark:bg-zinc-950',
-      className
-    )}
-  >
+  <div className={cn('rounded-lg border bg-background p-4', className)}>
     {children}
   </div>
 );

@@ -46,7 +46,7 @@ const Home: FC = () => {
     'https://haydenbleasel.com/email-signature.png'
   );
   const [footer, setFooter] = useState<string>(
-    `CONFIDENTIALITY NOTICE — This email with all attachment(s) is solely for the use of the individual or entity to which it was intended. Unless otherwise indicated, it contains information that is confidential, privileged and/or exempt from disclosure under applicable law. If you are not the intended recipient, any disclosure, copying, distribution, or action taken based on this email is strictly prohibited. If you have received this email in error, please notify the sender of the error and delete the email. Thank you.`
+    'CONFIDENTIALITY NOTICE — This email with all attachment(s) is solely for the use of the individual or entity to which it was intended. Unless otherwise indicated, it contains information that is confidential, privileged and/or exempt from disclosure under applicable law. If you are not the intended recipient, any disclosure, copying, distribution, or action taken based on this email is strictly prohibited. If you have received this email in error, please notify the sender of the error and delete the email. Thank you.'
   );
   const [fontStack, setFontStack] = useState<string>(defaultFontStack);
   const [primaryColor, setPrimaryColor] = useState<string>('#000000');
@@ -282,12 +282,12 @@ const Home: FC = () => {
 
   return (
     <main className="flex h-full gap-4">
-      <div className="flex flex-col h-full w-full max-w-[520px] shrink-0 gap-8 self-start overflow-y-auto">
-        <Card className="h-full flex flex-col gap-8 overflow-auto">
+      <div className="flex h-full w-full max-w-[520px] shrink-0 flex-col gap-8 self-start overflow-y-auto">
+        <Card className="flex h-full flex-col gap-8 overflow-auto">
           <div>
             <h1
               className={cn(
-                'mb-2 text-3xl font-semibold',
+                'mb-2 font-semibold text-3xl',
                 'text-zinc-900',
                 'dark:text-white'
               )}
@@ -426,14 +426,14 @@ const Home: FC = () => {
             />
           </div>
 
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">
+          <p className="text-muted-foreground text-sm">
             Tested in Outlook and Gmail.
           </p>
         </Card>
       </div>
 
       <div className="flex h-full w-full flex-col gap-4">
-        <Card className="h-1/2 overflow-auto bg-zinc-900">
+        <Card className="h-1/2 overflow-auto bg-foreground">
           <SyntaxHighlighter
             language="html"
             wrapLines
@@ -446,7 +446,7 @@ const Home: FC = () => {
           </SyntaxHighlighter>
         </Card>
 
-        <Card className="h-1/2 p-0 overflow-hidden">
+        <Card className="h-1/2 overflow-hidden p-0">
           <iframe
             srcDoc={signature.join('')}
             className="h-full w-full"
