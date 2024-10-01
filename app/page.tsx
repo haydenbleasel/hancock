@@ -10,6 +10,7 @@ import type { FC } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { Card } from './components/card';
+import { Navbar } from './components/navbar';
 
 const defaultFontStack = [
   'Inter',
@@ -281,180 +282,169 @@ const Home: FC = () => {
   }
 
   return (
-    <main className="flex h-full gap-4">
-      <div className="flex h-full w-full max-w-[520px] shrink-0 flex-col gap-8 self-start overflow-y-auto">
-        <Card className="flex h-full flex-col gap-8 overflow-auto">
-          <div>
-            <h1
-              className={cn(
-                'mb-2 font-semibold text-3xl',
-                'text-zinc-900',
-                'dark:text-white'
-              )}
+    <div className="flex h-full w-full flex-col gap-4 overflow-hidden">
+      <Navbar />
+      <main className="flex h-full flex-1 gap-4">
+        <div className="flex h-full w-full max-w-[520px] shrink-0 flex-col gap-8 self-start overflow-y-auto">
+          <Card className="flex h-full flex-col gap-8 overflow-auto">
+            <div>
+              <p
+                className={cn(
+                  'm-0 font-normal text-md',
+                  'text-zinc-500',
+                  'dark:text-zinc-400'
+                )}
+              >
+                Enter your details below to generate your email signature.
+              </p>
+            </div>
+
+            <div className="grid gap-6">
+              <Input
+                label="Full name"
+                value={name}
+                onChangeText={setName}
+                placeholder="Jane Smith"
+              />
+
+              <Input
+                label="Email address"
+                value={email}
+                onChangeText={setEmail}
+                placeholder="janesmith@acme.com"
+                type="email"
+              />
+
+              <Input
+                label="Pronouns"
+                value={pronouns}
+                onChangeText={setPronouns}
+                placeholder="He / him"
+              />
+
+              <Input
+                label="Role"
+                value={role}
+                onChangeText={setRole}
+                placeholder="Product Manager"
+              />
+
+              <Input
+                label="Phone number"
+                value={phone}
+                onChangeText={setPhone}
+                placeholder="+1 234 567 890"
+                type="tel"
+              />
+
+              <Input
+                label="Mobile number"
+                value={mobile}
+                onChangeText={setMobile}
+                placeholder="+61 234 567 890"
+                type="tel"
+              />
+
+              <Input
+                label="Fax number"
+                value={fax}
+                onChangeText={setFax}
+                placeholder="+1 234 567 890"
+                type="tel"
+              />
+
+              <Input
+                label="Call booking link"
+                value={bookingLink}
+                onChangeText={setBookingLink}
+                placeholder="https://example.com/booking"
+                type="url"
+              />
+
+              <Input
+                label="Company"
+                value={company}
+                onChangeText={setCompany}
+                placeholder="Acme, Inc."
+              />
+
+              <Input
+                label="Company Website"
+                value={website}
+                onChangeText={setWebsite}
+                placeholder="https://acme.com/"
+              />
+
+              <Input
+                label="Company Address"
+                value={address}
+                onChangeText={setAddress}
+                placeholder="123 Charming Avenue, New York"
+              />
+
+              <Input
+                label="Logo URL"
+                value={logo}
+                onChangeText={setLogo}
+                placeholder="https://acme.com/images/logo.png"
+                type="url"
+              />
+
+              <Textarea
+                label="Footer"
+                value={footer}
+                onChangeText={setFooter}
+                placeholder="Start typing..."
+              />
+
+              <Input
+                label="Font Stack"
+                value={fontStack}
+                onChangeText={setFontStack}
+                placeholder={defaultFontStack}
+              />
+
+              <Input
+                label="Primary Color"
+                value={primaryColor}
+                onChangeText={setPrimaryColor}
+                placeholder="#000000"
+              />
+
+              <Input
+                label="Twitter"
+                value={twitter}
+                onChangeText={setTwitter}
+                placeholder="haydenbleasel"
+              />
+            </div>
+          </Card>
+        </div>
+
+        <div className="flex h-full w-full flex-col gap-4">
+          <Card className="h-1/2 overflow-auto bg-foreground">
+            <SyntaxHighlighter
+              language="html"
+              wrapLines
+              wrapLongLines
+              className="text-sm"
+              style={nord}
+              customStyle={{ backgroundColor: 'transparent' }}
             >
-              Email Signature Generator
-            </h1>
+              {signature.join('')}
+            </SyntaxHighlighter>
+          </Card>
 
-            <p
-              className={cn(
-                'text-md m-0 font-normal',
-                'text-zinc-500',
-                'dark:text-zinc-400'
-              )}
-            >
-              Enter your details below to generate your email signature.
-            </p>
-          </div>
-
-          <div className="grid gap-6">
-            <Input
-              label="Full name"
-              value={name}
-              onChangeText={setName}
-              placeholder="Jane Smith"
+          <Card className="h-1/2 overflow-hidden p-0">
+            <iframe
+              srcDoc={signature.join('')}
+              className="h-full w-full"
+              title="Signature Preview"
             />
-
-            <Input
-              label="Email address"
-              value={email}
-              onChangeText={setEmail}
-              placeholder="janesmith@acme.com"
-              type="email"
-            />
-
-            <Input
-              label="Pronouns"
-              value={pronouns}
-              onChangeText={setPronouns}
-              placeholder="He / him"
-            />
-
-            <Input
-              label="Role"
-              value={role}
-              onChangeText={setRole}
-              placeholder="Product Manager"
-            />
-
-            <Input
-              label="Phone number"
-              value={phone}
-              onChangeText={setPhone}
-              placeholder="+1 234 567 890"
-              type="tel"
-            />
-
-            <Input
-              label="Mobile number"
-              value={mobile}
-              onChangeText={setMobile}
-              placeholder="+61 234 567 890"
-              type="tel"
-            />
-
-            <Input
-              label="Fax number"
-              value={fax}
-              onChangeText={setFax}
-              placeholder="+1 234 567 890"
-              type="tel"
-            />
-
-            <Input
-              label="Call booking link"
-              value={bookingLink}
-              onChangeText={setBookingLink}
-              placeholder="https://example.com/booking"
-              type="url"
-            />
-
-            <Input
-              label="Company"
-              value={company}
-              onChangeText={setCompany}
-              placeholder="Acme, Inc."
-            />
-
-            <Input
-              label="Company Website"
-              value={website}
-              onChangeText={setWebsite}
-              placeholder="https://acme.com/"
-            />
-
-            <Input
-              label="Company Address"
-              value={address}
-              onChangeText={setAddress}
-              placeholder="123 Charming Avenue, New York"
-            />
-
-            <Input
-              label="Logo URL"
-              value={logo}
-              onChangeText={setLogo}
-              placeholder="https://acme.com/images/logo.png"
-              type="url"
-            />
-
-            <Textarea
-              label="Footer"
-              value={footer}
-              onChangeText={setFooter}
-              placeholder="Start typing..."
-            />
-
-            <Input
-              label="Font Stack"
-              value={fontStack}
-              onChangeText={setFontStack}
-              placeholder={defaultFontStack}
-            />
-
-            <Input
-              label="Primary Color"
-              value={primaryColor}
-              onChangeText={setPrimaryColor}
-              placeholder="#000000"
-            />
-
-            <Input
-              label="Twitter"
-              value={twitter}
-              onChangeText={setTwitter}
-              placeholder="haydenbleasel"
-            />
-          </div>
-
-          <p className="text-muted-foreground text-sm">
-            Tested in Outlook and Gmail.
-          </p>
-        </Card>
-      </div>
-
-      <div className="flex h-full w-full flex-col gap-4">
-        <Card className="h-1/2 overflow-auto bg-foreground">
-          <SyntaxHighlighter
-            language="html"
-            wrapLines
-            wrapLongLines
-            className="text-sm"
-            style={nord}
-            customStyle={{ backgroundColor: 'transparent' }}
-          >
-            {signature.join('')}
-          </SyntaxHighlighter>
-        </Card>
-
-        <Card className="h-1/2 overflow-hidden p-0">
-          <iframe
-            srcDoc={signature.join('')}
-            className="h-full w-full"
-            title="Signature Preview"
-          />
-        </Card>
-      </div>
-    </main>
+          </Card>
+        </div>
+      </main>
+    </div>
   );
 };
 
